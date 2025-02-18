@@ -12,18 +12,15 @@ X-API-Key can be generated at:
 `Threema Broadcast > Settings > Your profile > API Keys.`
 
 ## Example usage
-
 Add two Secrets to your repo
 - THREEMA_URL
 - THREEMA_XAPIKEY
 
 ```yaml
-name: Send Threema Message
-
 on: [push]
 
 jobs:
-  Notify-Threema:
+  hello_world_job:
     runs-on: ubuntu-latest
     name: Send Threema Alert
     steps:
@@ -33,7 +30,8 @@ jobs:
         with:
           THREEMA_URL: ${{ secrets.THREEMA_URL }}
           THREEMA_XAPIKEY: ${{ secrets.THREEMA_XAPIKEY }}
-          message: 'Your message here'
+          message: 'Hello from github'
+          JobStatus: '${{ job.status }}'
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
 ```
