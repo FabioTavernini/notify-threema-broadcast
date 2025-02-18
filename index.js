@@ -18,6 +18,7 @@ async function run() {
     // Create a formatted message with GitHub information
     const formattedMessage = `
     ${message}
+    
 🔔 GitHub Action Update:
     Workflow: ${workflowName}
 
