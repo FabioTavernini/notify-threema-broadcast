@@ -1,4 +1,5 @@
 name: 'Send Message Over Threema Broadcast API'
+author: 'Fabio Tavernini - https://github.com/FabioTavernini'
 description: 'Send a message to a Threema group using the Threema Broadcast API'
 inputs:
   THREEMA_URL:
