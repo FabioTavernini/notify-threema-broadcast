@@ -40042,8 +40042,11 @@ async function run() {
     ${message}
 🔔 GitHub Action Update:
     Workflow: ${workflowName}
+
     Repository: ${repoName}
-    Branch: ${branch}
+
+🌱 Branch: ${branch}
+
     Commit: ${commitSha}`;
 
     // Message payload
