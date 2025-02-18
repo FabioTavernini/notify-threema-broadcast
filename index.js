@@ -7,7 +7,7 @@ async function run() {
     // Retrieve inputs from GitHub Action
     const xApiKey = core.getInput('THREEMA_XAPIKEY');
     const threemaUrl = core.getInput('THREEMA_URL');
-    const jobstatus = core.getInput('jobstatus');
+    let jobstatus = core.getInput('jobstatus');
     const message = core.getInput('message');
 
     if (jobstatus == 'success') {
