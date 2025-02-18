@@ -1,4 +1,5 @@
 const core = require('@actions/core');
+const github = require('@actions/github');
 const axios = require('axios');
 
 async function run() {
@@ -8,10 +9,25 @@ async function run() {
     const threemaUrl = core.getInput('THREEMA_URL');
     const message = core.getInput('message');
 
+    const { repo, workflow, ref, sha } = github.context;
+    const workflowName = workflow;
+    const repoName = `${repo.owner}/${repo.repo}`;
+    const branch = ref.replace('refs/heads/', '');
+    const commitSha = sha.substring(0, 7); // Short SHA
+
+    // Create a formatted message with GitHub information
+    const formattedMessage = `
+    ${message}
+🔔 GitHub Action Update:
+    Workflow: ${workflowName}
+    Repository: ${repoName}
+    Branch: ${branch}
+    Commit: ${commitSha}`;
+
     // Message payload
     const payload = {
       type: 'text',
-      body: message,
+      body: formattedMessage,
     };
 
     // Send the POST request to Threema API
@@ -32,7 +48,7 @@ async function run() {
       const errorMessage = apiError.response
         ? `API Error: ${apiError.response.status} - ${JSON.stringify(apiError.response.data)}`
         : `Network Error: ${apiError.message}`;
-      
+
       throw new Error(errorMessage);
     }
 
