@@ -10,6 +10,9 @@ inputs:
   message: 
     description: 'The message text to send to the group'
     required: true
+  JobStatus: 
+    description: 'Jobstatus - e.g ${{job.status}}'
+    required: true
 outputs:
   response:
     description: 'API response data'
