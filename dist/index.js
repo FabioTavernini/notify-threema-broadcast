@@ -31841,15 +31841,11 @@ const axios = __nccwpck_require__(7410);
 
 try {
   // Retrieve secrets from GitHub Secrets (configured in the repository)
-  const apiKey = process.env.X_API_KEY;  // Retrieving the API key from environment variables (secrets)
-  const threemaUrl = process.env.THREEMA_URL;  // Retrieving the Threema API URL
-
-  // Get inputs from the GitHub Action
-  const group = core.getInput('group');
-  const identity = core.getInput('identity');
+  const XApiKey = core.getInput('X-API-Key');
+  const threemaUrl = core.getInput('group');
   const message = core.getInput('message');
 
-  if (!apiKey || !threemaUrl || !group || !identity || !message) {
+  if (!XApiKey || !threemaUrl || !message) {
     throw new Error('Missing required input parameters or secrets');
   }
 
@@ -31863,7 +31859,7 @@ try {
   axios.post(threemaUrl, payload, {
     headers: {
       'Content-Type': 'application/json',
-      'X-API_Key': apiKey,
+      'X-API_Key': xapikey,
     },
   })
     .then(response => {

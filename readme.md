@@ -5,23 +5,20 @@
 ```yaml
 name: Send Threema Message
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  send-threema-message:
+  hello_world_job:
     runs-on: ubuntu-latest
-
+    name: A job to say hello
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Send message to Threema group
-      uses: yourusername/sendmessageoverthreema@main
-      with:
-        group: "your_group_id"
-        identity: "your_identity"
-        message: "This is a test message from GitHub Actions!"
+      - name: Hello world action step
+        id: hello
+        uses: FabioTavernini/notify-threema-broadcast
+        with:
+          threemaUrl: ${{ secrets.THREEMA_URL }}
+          X-API-Key: ${{ secrets.X-API-Key }}
+          message: 'Hello from git'
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
 ```
