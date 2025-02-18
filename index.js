@@ -22,7 +22,7 @@ try {
   axios.post(threemaUrl, payload, {
     headers: {
       'Content-Type': 'application/json',
-      'X-API_Key': XApiKey,
+      'X-API-Key': XApiKey,
     },
   })
     .then(response => {
