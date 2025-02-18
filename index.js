@@ -7,7 +7,7 @@ async function run() {
     // Retrieve inputs from GitHub Action
     const xApiKey = core.getInput('THREEMA_XAPIKEY');
     const threemaUrl = core.getInput('THREEMA_URL');
-    const JobStatus = core.getInput('JobStatus');
+    const jobstatus = core.getInput('jobstatus');
     const message = core.getInput('message');
 
     const { repo, workflow, ref, sha } = github.context;
@@ -21,7 +21,7 @@ async function run() {
 🔔 GitHub Action Update:
 Workflow: ${workflowName}
 
-Status: ${JobStatus}
+Status: ${jobstatus}
     
 Repository: ${repoName}
 
