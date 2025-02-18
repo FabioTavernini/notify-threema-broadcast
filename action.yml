@@ -11,8 +11,10 @@ inputs:
     description: 'The message text to send to the group'
     required: true
 outputs:
-  time: 
-    description: 'The time at which the message was sent'
+  response:
+    description: 'API response data'
+  status:
+    description: 'HTTP status code'
 runs:
   using: 'node20'
   main: 'dist/index.js'
