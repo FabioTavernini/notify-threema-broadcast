@@ -40026,8 +40026,8 @@ const axios = __nccwpck_require__(9548);
 
 try {
   // Retrieve secrets from GitHub Secrets (configured in the repository)
-  const XApiKey = core.getInput('X-API-Key');
-  const threemaUrl = core.getInput('group');
+  const XApiKey = core.getInput('THREEMA_XAPIKEY');
+  const threemaUrl = core.getInput('THREEMA_URL');
   const message = core.getInput('message');
 
   if (!XApiKey || !threemaUrl || !message) {
@@ -40044,7 +40044,7 @@ try {
   axios.post(threemaUrl, payload, {
     headers: {
       'Content-Type': 'application/json',
-      'X-API_Key': xapikey,
+      'X-API_Key': XApiKey,
     },
   })
     .then(response => {

@@ -1,10 +1,10 @@
 name: 'Send Message Over Threema Broadcast API'
 description: 'Send a message to a Threema group using the Threema Broadcast API'
 inputs:
-  threemaUrl:
+  THREEMA_URL:
     description: 'url to your Threema broadcast Group (POST will be sent to this)'
     required: true
-  X-API-Key: 
+  THREEMA_XAPIKEY: 
     description: 'Your Threema X-API-Key'
     required: true
   message: 
