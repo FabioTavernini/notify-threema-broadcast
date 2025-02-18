@@ -10,6 +10,14 @@ async function run() {
     const jobstatus = core.getInput('jobstatus');
     const message = core.getInput('message');
 
+    if (jobstatus == 'success') {
+      jobstatus = '✅' + jobstatus
+    } else if (jobstatus == 'failure') {
+      jobstatus = '❌' + jobstatus
+    } else {
+      jobstatus = '❓' + jobstatus
+    }
+
     const { repo, workflow, ref, sha } = github.context;
     const workflowName = workflow;
     const repoName = `${repo.owner}/${repo.repo}`;
@@ -23,7 +31,7 @@ Workflow: ${workflowName}
 
 Status: ${jobstatus}
     
-Repository: ${repoName}
+👨‍💻 Repository: ${repoName}
 
 🌱 Branch: ${branch}
 
