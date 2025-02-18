@@ -21,15 +21,15 @@ async function run() {
     ${message}
     
 🔔 GitHub Action Update:
-    Workflow: ${workflowName}
+Workflow: ${workflowName}
 
-    Job Status: ${jobStatus}
+Job Status: ${jobStatus}
     
-    Repository: ${repoName}
+Repository: ${repoName}
 
-🌱  Branch: ${branch}
+🌱 Branch: ${branch}
 
-    Commit: ${commitSha}`;
+Commit sha: ${commitSha}`;
 
     // Message payload
     const payload = {
