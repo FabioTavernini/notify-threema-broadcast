@@ -1,0 +1,15 @@
+name: 'Send Message Over Threema Broadcast API'
+description: 'Send a message to a Threema group using the Threema Broadcast API'
+inputs:
+  URL:  # Message content to be sent
+    description: 'url to your Threema broadcast Group (POST will be sent to this)'
+    required: true
+  message:  # Message content to be sent
+    description: 'The message text to send to the group'
+    required: true
+outputs:
+  time:  # Output time when the message was sent
+    description: 'The time at which the message was sent'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
