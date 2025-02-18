@@ -7,9 +7,10 @@ async function run() {
     // Retrieve inputs from GitHub Action
     const xApiKey = core.getInput('THREEMA_XAPIKEY');
     const threemaUrl = core.getInput('THREEMA_URL');
+
     const message = core.getInput('message');
 
-    const { repo, workflow, ref, sha } = github.context;
+    const { repo, workflow, ref, sha, action_status } = github.context;
     const workflowName = workflow;
     const repoName = `${repo.owner}/${repo.repo}`;
     const branch = ref.replace('refs/heads/', '');
@@ -24,7 +25,9 @@ async function run() {
 
     Repository: ${repoName}
 
-🌱 Branch: ${branch}
+🌱  Branch: ${branch}
+
+    Status: ${action_status}
 
     Commit: ${commitSha}`;
 
