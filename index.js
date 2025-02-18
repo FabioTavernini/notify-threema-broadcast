@@ -10,12 +10,12 @@ async function run() {
 
     const message = core.getInput('message');
 
-    const { repo, workflow, ref, sha, action_status } = github.context;
+    const { repo, workflow, ref, sha, runStatus } = github.context;
     const workflowName = workflow;
     const repoName = `${repo.owner}/${repo.repo}`;
     const branch = ref.replace('refs/heads/', '');
-    const commitSha = sha.substring(0, 7); // Short SHA
-
+    const commitSha = sha.substring(0, 7); // Short SHA 
+    const JobStatus = runStatus; // Short SHA 
     // Create a formatted message with GitHub information
     const formattedMessage = `
     ${message}
@@ -23,11 +23,11 @@ async function run() {
 🔔 GitHub Action Update:
     Workflow: ${workflowName}
 
+    Job Status: ${jobStatus}
+    
     Repository: ${repoName}
 
 🌱  Branch: ${branch}
-
-    Status: ${action_status}
 
     Commit: ${commitSha}`;
 
