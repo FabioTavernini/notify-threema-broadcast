@@ -11,11 +11,11 @@ async function run() {
     const message = core.getInput('message');
 
     if (jobstatus == 'success') {
-      jobstatus = '✅' + jobstatus
+      jobstatus = '✅ ' + jobstatus
     } else if (jobstatus == 'failure') {
-      jobstatus = '❌' + jobstatus
+      jobstatus = '❌ ' + jobstatus
     } else {
-      jobstatus = '❓' + jobstatus
+      jobstatus = '❓ ' + jobstatus
     }
 
     const { repo, workflow, ref, sha } = github.context;
