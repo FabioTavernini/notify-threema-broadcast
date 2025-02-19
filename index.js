@@ -15,6 +15,7 @@ async function run() {
     const branch = ref.replace('refs/heads/', '');
     const commitSha = sha.substring(0, 7); // Short SHA 
 
+    console.log('jobData:');
     console.log(job);
     console.log(job.status);
 
