@@ -55,10 +55,10 @@ Commit sha: ${commitSha}`;
         },
       });
 
-      console.log('jobData:');
-      console.log(job);
-      console.log(job.status);
-      
+      core.info('jobData:');
+      core.info(job);
+      core.info(job.status);
+
       // Log success and set output
       console.log('Message sent successfully');
       core.setOutput('response', response.data);
