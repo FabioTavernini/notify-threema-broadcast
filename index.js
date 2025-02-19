@@ -15,6 +15,9 @@ async function run() {
     const branch = ref.replace('refs/heads/', '');
     const commitSha = sha.substring(0, 7); // Short SHA 
 
+    console.log(job);
+    console.log(job.status);
+
     jobstatus = job.status;
     if (jobstatus == 'success') {
       jobstatus = '✅ ' + jobstatus
