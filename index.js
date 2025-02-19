@@ -55,7 +55,7 @@ Commit sha: ${commitSha}`;
         },
       });
 
-      core.info('jobData:');
+      core.info('\u001b[35mThis foreground will be magenta')
       core.info(job);
       core.info(job.status);
 
