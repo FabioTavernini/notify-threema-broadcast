@@ -30,6 +30,7 @@ jobs:
         with:
           THREEMA_URL: ${{ secrets.THREEMA_URL }}
           THREEMA_XAPIKEY: ${{ secrets.THREEMA_XAPIKEY }}
+          job: ${{ toJson(job) }}
           message: 'Hello from github'
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"

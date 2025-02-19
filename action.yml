@@ -8,6 +8,9 @@ inputs:
   THREEMA_XAPIKEY: 
     description: 'Your Threema X-API-Key'
     required: true
+  job: 
+    description: 'Job data as json --> $ {{ toJson(job) }}'
+    required: true
   message: 
     description: 'The message text to send to the group'
     required: true

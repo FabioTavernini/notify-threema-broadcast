@@ -1,17 +1,13 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const axios = require('axios');
-const { Octokit } = require('@octokit/rest'); // GitHub API client
-
-// Initialize GitHub client
-const octokit = new Octokit({ auth: process.env.GITHUB_TOKEN });
-
 
 async function run() {
   try {
     // Retrieve inputs from GitHub Action
     const xApiKey = core.getInput('THREEMA_XAPIKEY');
     const threemaUrl = core.getInput('THREEMA_URL');
+    const job = JSON.parse(core.getInput('job'));
     const message = core.getInput('message');
 
     const { repo, workflow, ref, sha } = github.context;
@@ -20,31 +16,19 @@ async function run() {
     const branch = ref.replace('refs/heads/', '');
     const commitSha = sha.substring(0, 7); // Short SHA 
 
-
-
-    // Fetch the current workflow run's status using the GitHub API
-    const runId = github.context.runId;
-    const { data: runData } = await octokit.actions.getWorkflowRun({
-      owner: repo.owner,
-      repo: repo.repo,
-      run_id: runId,
-    });
-
-    // Find the status of the current job
-    // const jobStatus = runData.status; // "queued", "in_progress", or "completed"
-    const conclusion = runData.conclusion; // "success", "failure", etc.
-
-    let formattedJobStatus = '❓ Unknown Status';
-    if (conclusion === 'success') {
-      formattedJobStatus = '✅ Success';
-    } else if (conclusion === 'failure') {
-      formattedJobStatus = '❌ Failure';
-    } else if (conclusion === 'cancelled') {
-      formattedJobStatus = '🛑 Cancelled';
-    } else if (conclusion === 'skipped') {
-      formattedJobStatus = '⏩ Skipped';
+    switch (job.status) {
+      case "success":
+        jobstatus = '✅ ' + job.status;
+        break;
+      case "failure":
+        jobstatus = '❌ ' + job.status;
+        break;
+      case "cancelled":
+        jobstatus = '🛑 ' + job.status;
+        break;
+      default:
+        jobstatus = '❓ ' + job.status;
     }
-
 
     const formattedMessage = `
 ${message}
@@ -61,7 +45,7 @@ Workflow
 ${workflowName}
 
 Status
-${formattedJobStatus}
+${jobstatus}
 
 Commit sha
 ${commitSha}`;
