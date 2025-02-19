@@ -11,12 +11,27 @@ To get more infos about threema API:
 X-API-Key can be generated at:
 `Threema Broadcast > Settings > Your profile > API Keys.`
 
+
+
+## Inputs
+
+| name            | required | description                                                     |
+|-----------------|----------|-----------------------------------------------------------------|
+| THREEMA_URL     | yes      | url to your Threema broadcast Group (POST will be sent to this) |
+| THREEMA_XAPIKEY | yes      | Your Threema X-API-Key                                          |
+| job             | yes      | Job data as json --> ${{ toJson(job) }}                         |
+| message         | yes      | The message text to send to the group                           |
+
+
+
 ## Example usage
 
 Add two Secrets to your repo
 
 - THREEMA_URL
 - THREEMA_XAPIKEY
+
+Then create or edit an action at `.github/workflows/youraction.yaml`.
 
 ```yaml
 on: [push]

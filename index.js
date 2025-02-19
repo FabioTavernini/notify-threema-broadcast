@@ -85,3 +85,5 @@ ${commitSha}`;
 
 // Execute the action
 run();
+
+module.exports = { run };

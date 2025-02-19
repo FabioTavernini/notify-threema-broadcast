@@ -1,0 +1,93 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-and-build:
+    name: Test and Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  release:
+    name: Release
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      # Commit the built files before release
+      - name: Commit dist
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add dist/
+          git commit -m "chore: update dist [skip ci]" || echo "No changes to commit"
+
+      # This step will analyze commits and create/update the release
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: semantic-release/semantic-release@v23
+        with:
+          branches:
+            - main
+
+      # Update major version tag (v1, v2, etc.)
+      - name: Update major version tag
+        if: success()
+        run: |
+          VERSION=$(cat package.json | jq -r .version)
+          MAJOR_VERSION=v${VERSION%%.*}
+          git tag -d $MAJOR_VERSION || true
+          git push origin :refs/tags/$MAJOR_VERSION || true
+          git tag $MAJOR_VERSION
+          git push origin $MAJOR_VERSION

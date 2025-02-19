@@ -4,7 +4,8 @@
   "description": "This action prints \"Hello World\" or \"Hello\" + the name of a person to greet to the log.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npx @vercel/ncc build"
+    "build": "npx @vercel/ncc build",
+    "test":"jest"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +16,11 @@
     "@octokit/rest": "^21.1.1",
     "@vercel/ncc": "^0.38.3",
     "axios": "^1.7.9"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "axios-mock-adapter": "^2.1.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
   }
 }
