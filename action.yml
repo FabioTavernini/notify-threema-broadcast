@@ -23,5 +23,5 @@ runs:
   using: 'node20'
   main: 'dist/index.js'
 branding:
-  icon: 'arrow-right-circle'
+  icon: 'bell'
   color: 'green'
