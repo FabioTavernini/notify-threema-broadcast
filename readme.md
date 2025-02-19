@@ -1,3 +1,5 @@
+[![Release](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml)
+
 # Send Alert to Threema Broadcast Group with Github actions
 
 Send a message and repo infos to a Threema Broadcast Group using github actions.
@@ -43,7 +45,7 @@ jobs:
     steps:
       - name: Send Threema message
         id: hello
-        uses: FabioTavernini/notify-threema-broadcast@HEAD
+        uses: FabioTavernini/notify-threema-broadcast@v1
         with:
           THREEMA_URL: ${{ secrets.THREEMA_URL }}
           THREEMA_XAPIKEY: ${{ secrets.THREEMA_XAPIKEY }}
@@ -54,7 +56,3 @@ jobs:
           echo "response ${{ steps.hello.outputs.response }}"
           echo "status ${{ steps.hello.outputs.status }}"
 ```
-
-
-# Contribution
-You are welcome to contribute in any form.
