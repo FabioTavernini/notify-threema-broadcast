@@ -7,9 +7,15 @@ async function run() {
     // Retrieve inputs from GitHub Action
     const xApiKey = core.getInput('THREEMA_XAPIKEY');
     const threemaUrl = core.getInput('THREEMA_URL');
-    let jobstatus = core.getInput('jobstatus');
     const message = core.getInput('message');
 
+    const { repo, workflow, ref, sha, job } = github.context;
+    const workflowName = workflow;
+    const repoName = `${repo.owner}/${repo.repo}`;
+    const branch = ref.replace('refs/heads/', '');
+    const commitSha = sha.substring(0, 7); // Short SHA 
+
+    jobstatus = job.status;
     if (jobstatus == 'success') {
       jobstatus = '✅ ' + jobstatus
     } else if (jobstatus == 'failure') {
@@ -18,11 +24,6 @@ async function run() {
       jobstatus = '❓ ' + jobstatus
     }
 
-    const { repo, workflow, ref, sha } = github.context;
-    const workflowName = workflow;
-    const repoName = `${repo.owner}/${repo.repo}`;
-    const branch = ref.replace('refs/heads/', '');
-    const commitSha = sha.substring(0, 7); // Short SHA 
     const formattedMessage = `
     ${message}
     
