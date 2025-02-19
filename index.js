@@ -15,9 +15,7 @@ async function run() {
     const branch = ref.replace('refs/heads/', '');
     const commitSha = sha.substring(0, 7); // Short SHA 
 
-    console.log('jobData:');
-    console.log(job);
-    console.log(job.status);
+
 
     jobstatus = job.status;
     if (jobstatus == 'success') {
@@ -57,6 +55,10 @@ Commit sha: ${commitSha}`;
         },
       });
 
+      console.log('jobData:');
+      console.log(job);
+      console.log(job.status);
+      
       // Log success and set output
       console.log('Message sent successfully');
       core.setOutput('response', response.data);
