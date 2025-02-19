@@ -45,7 +45,7 @@ jobs:
     steps:
       - name: Send Threema message
         id: hello
-        uses: FabioTavernini/notify-threema-broadcast@HEAD
+        uses: FabioTavernini/notify-threema-broadcast@v1
         with:
           THREEMA_URL: ${{ secrets.THREEMA_URL }}
           THREEMA_XAPIKEY: ${{ secrets.THREEMA_XAPIKEY }}
