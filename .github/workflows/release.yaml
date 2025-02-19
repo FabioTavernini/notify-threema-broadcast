@@ -64,7 +64,6 @@ jobs:
           name: dist
           path: dist/
 
-      # Commit the built files before release
       - name: Commit dist
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -72,16 +71,11 @@ jobs:
           git add dist/
           git commit -m "chore: update dist [skip ci]" || echo "No changes to commit"
 
-      # This step will analyze commits and create/update the release
-      - name: Release
+      - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        uses: semantic-release/semantic-release@v23
-        with:
-          branches:
-            - main
+        run: npx semantic-release
 
-      # Update major version tag (v1, v2, etc.)
       - name: Update major version tag
         if: success()
         run: |
