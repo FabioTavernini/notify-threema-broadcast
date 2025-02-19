@@ -1,3 +1,5 @@
+[![Release](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml)
+
 # Send Alert to Threema Broadcast Group with Github actions
 
 Send a message and repo infos to a Threema Broadcast Group using github actions.
