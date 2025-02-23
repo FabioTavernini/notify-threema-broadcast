@@ -2,6 +2,8 @@
 
 [![Release](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml)
 
+[![CodeQL](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/github-code-scanning/codeql)
+
 # Send Alert to Threema Broadcast Group with Github actions
 :bell: Send a custom message with repo infos to a Threema Broadcast Group using github actions.
 
@@ -52,6 +54,7 @@ jobs:
           echo "response ${{ steps.hello.outputs.response }}"
           echo "status ${{ steps.hello.outputs.status }}"
 ```
+
 # Contribution
 Feel free to contribute in any way, shape or form.
 
