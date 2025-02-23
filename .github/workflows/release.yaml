@@ -2,15 +2,15 @@ name: Release
 permissions:
   contents: read
   pull-requests: write
-  
+
 on:
   push:
     branches:
       - main
 
 jobs:
-  test-and-build:
-    name: Test and Build
+  test:
+    name: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,8 +19,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
@@ -28,6 +28,10 @@ jobs:
       - name: Run tests
         run: npm test
 
+  build:
+    name: build
+    needs: test
+    steps:
       - name: Build
         run: npm run build
 
@@ -38,8 +42,8 @@ jobs:
           path: dist/
 
   release:
-    name: Release
-    needs: test-and-build
+    name: release
+    needs: [test, build]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -56,8 +60,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - name: Install dependencies
         run: npm ci
