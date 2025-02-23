@@ -33,21 +33,21 @@ async function run() {
     const formattedMessage = `
 ${message}
     
-🔔 GitHub Action Update
+🔔 *GitHub Action Update*
 
-👨‍💻 Repository
+👨‍💻 *Repository*
 ${repoName}
 
-🌱 Branch
+🌱 *Branch*
 ${branch}
 
-Workflow
+🔄 *Workflow*
 ${workflowName}
 
-Status
+⁉️ *Status*
 ${jobstatus}
 
-Commit sha
+🔍 *Commit sha*
 ${commitSha}`;
 
     // Message payload
