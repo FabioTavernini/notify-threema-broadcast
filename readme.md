@@ -38,12 +38,13 @@ Then create or edit an action at `.github/workflows/youraction.yaml`.
 on: [push]
 
 jobs:
-  hello_world_job:
+  demojob:
     runs-on: ubuntu-latest
     name: Send Threema Alert
     steps:
       - name: Send Threema message
         id: hello
+        if: always() # Always run the job, so failures are reported / alerted.
         uses: FabioTavernini/notify-threema-broadcast@v1
         with:
           THREEMA_URL: ${{ secrets.THREEMA_URL }}
