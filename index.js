@@ -31,9 +31,9 @@ async function run() {
     }
 
     const formattedMessage = `
-${message}
+*${message}*
     
-🔔 *GitHub Action Update*
+🔔 GitHub Action Update
 
 👨‍💻 *Repository*
 ${repoName}
