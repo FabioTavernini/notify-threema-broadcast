@@ -1,8 +1,9 @@
+<img height="32" width="32" src="https://cdn.simpleicons.org/threema" />
+
 [![Release](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml)
 
 # Send Alert to Threema Broadcast Group with Github actions
-
-Send a message and repo infos to a Threema Broadcast Group using github actions.
+:bell: Send a custom message with repo infos to a Threema Broadcast Group using github actions.
 
 Threema Group URL will look like this:
 `https://broadcast.threema.ch/api/v1/identities/{broadcastUid}/groups/{groupUid}/chat`
@@ -13,21 +14,16 @@ To get more infos about threema API:
 X-API-Key can be generated at:
 `Threema Broadcast > Settings > Your profile > API Keys.`
 
-
-
 ## Inputs
 
-| name            | required | description                                                     |
+| Name            | Required | Description                                                     |
 |-----------------|----------|-----------------------------------------------------------------|
 | THREEMA_URL     | yes      | url to your Threema broadcast Group (POST will be sent to this) |
 | THREEMA_XAPIKEY | yes      | Your Threema X-API-Key                                          |
-| job             | yes      | Job data as json --> ${{ toJson(job) }}                         |
+| job             | yes      | Job data as json : `${{toJson(job)}}`                        |
 | message         | yes      | The message text to send to the group                           |
 
-
-
 ## Example usage
-
 Add two Secrets to your repo
 
 - THREEMA_URL
