@@ -9,8 +9,9 @@ on:
       - main
 
 jobs:
-  test:
-    name: test
+
+  test-and-build:
+    name: Test and Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,8 +20,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
@@ -28,11 +29,6 @@ jobs:
       - name: Run tests
         run: npm test
 
-  build:
-    name: build
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
       - name: Build
         run: npm run build
 
@@ -43,8 +39,8 @@ jobs:
           path: dist/
 
   release:
-    name: release
-    needs: [test, build]
+    name: Release
+    needs: test-and-build
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -61,8 +57,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "npm"
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
