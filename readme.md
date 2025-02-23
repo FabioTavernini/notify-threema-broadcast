@@ -1,4 +1,4 @@
-<img height="32" width="32" src="https://cdn.simpleicons.org/threema" />
+<img height="100" width="100" src="https://cdn.simpleicons.org/threema" />
 
 [![Release](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml)
 
@@ -20,7 +20,7 @@ X-API-Key can be generated at:
 |-----------------|----------|-----------------------------------------------------------------|
 | THREEMA_URL     | yes      | url to your Threema broadcast Group (POST will be sent to this) |
 | THREEMA_XAPIKEY | yes      | Your Threema X-API-Key                                          |
-| job             | yes      | Job data as json : `${{toJson(job)}}`                        |
+| job             | yes      | Job data as json : `${{toJson(job)}}`                           |
 | message         | yes      | The message text to send to the group                           |
 
 ## Example usage
@@ -54,3 +54,6 @@ jobs:
 ```
 # Contribution
 Feel free to contribute in any way, shape or form.
+
+# Disclaimer
+This project is not affiliated with [@Threema](https://github.com/Threema-ch). The Threema Broadcast API is used in this action as an external service, and the creator of this action is not responsible for any issues that arise from Threema’s service or changes to their API.
