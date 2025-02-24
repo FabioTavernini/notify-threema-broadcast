@@ -6,6 +6,7 @@
 [![CodeQL](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/github-code-scanning/codeql)
 
 # Send Alert to Threema Broadcast Group with Github actions
+
 :bell: Send a custom message with repo infos to a Threema Broadcast Group using github actions.
 
 Threema Group URL will look like this:
@@ -27,6 +28,7 @@ X-API-Key can be generated at:
 | message         | yes      | The message text to send to the group                           |
 
 ## Example usage
+
 Add two Secrets to your repo
 
 - THREEMA_URL
@@ -58,7 +60,9 @@ jobs:
 ```
 
 # Contribution
+
 Feel free to contribute in any way, shape or form.
 
 # Disclaimer
+
 This project is not affiliated with [@Threema](https://github.com/Threema-ch). The Threema Broadcast API is used in this action as an external service, and the creator of this action is not responsible for any issues that arise from Threema’s service or changes to their API.
