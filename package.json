@@ -1,7 +1,7 @@
 {
   "name": "threemabroadcastnotification",
   "version": "1.0.0",
-  "description": "This action prints \"Hello World\" or \"Hello\" + the name of a person to greet to the log.",
+  "description": "This action sends an Alert to a specified Threema Broadcast group over the Threema Gateway API",
   "main": "dist/index.js",
   "private": true,
   "scripts": {

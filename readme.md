@@ -5,6 +5,9 @@
 [![Release](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml/badge.svg?branch=main)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/release.yaml)
 [![CodeQL](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/FabioTavernini/notify-threema-broadcast/actions/workflows/github-code-scanning/codeql)
 
+![Static Badge](https://img.shields.io/github/license/FabioTavernini/notify-threema-broadcast)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/FabioTavernini/notify-threema-broadcast)
+
 # Send Alert to Threema Broadcast Group with Github actions
 
 :bell: Send a custom message with repo infos to a Threema Broadcast Group using github actions.
