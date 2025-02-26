@@ -91,6 +91,10 @@ jobs:
           echo "status ${{ steps.hello.outputs.status }}"
 ```
 
+## Styling
+
+If you want to style/customize your message further, have a look at the guide [here](https://threema.ch/en/faq/markup).
+
 # Contribution
 
 Feel free to contribute in any way, shape or form.
