@@ -39,6 +39,10 @@ Add two Secrets to your repo
 
 Then create or edit an action at `.github/workflows/youraction.yaml`.
 
+# Examples
+
+## Basic Example:
+
 ```yaml
 on: [push]
 
@@ -56,6 +60,31 @@ jobs:
           THREEMA_XAPIKEY: ${{ secrets.THREEMA_XAPIKEY }}
           job: ${{ toJson(job) }}
           message: 'Hello from github'
+      - name: Get outputs
+        run: |
+          echo "response ${{ steps.hello.outputs.response }}"
+          echo "status ${{ steps.hello.outputs.status }}"
+```
+
+## Alert with commit message
+
+```yaml
+on: [push]
+
+jobs:
+  demojob:
+    runs-on: ubuntu-latest
+    name: Send Threema Alert
+    steps:
+      - name: Send Threema message
+        id: hello
+        if: always() # Always run the job, so failures are reported / alerted.
+        uses: FabioTavernini/notify-threema-broadcast@v1
+        with:
+          THREEMA_URL: ${{ secrets.THREEMA_URL }}
+          THREEMA_XAPIKEY: ${{ secrets.THREEMA_XAPIKEY }}
+          job: ${{ toJson(job) }}
+          message: '${{ github.event.head_commit.message }}'
       - name: Get outputs
         run: |
           echo "response ${{ steps.hello.outputs.response }}"
