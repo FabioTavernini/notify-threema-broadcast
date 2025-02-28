@@ -12,15 +12,6 @@
 
 :bell: Send a custom message with repo infos to a Threema Broadcast Group using github actions.
 
-Threema Group URL will look like this:
-`https://broadcast.threema.ch/api/v1/identities/{broadcastUid}/groups/{groupUid}/chat`
-
-To get more infos about threema API:
-[API Docs](https://broadcast.threema.ch/en/api-doc)
-
-X-API-Key can be generated at:
-`Threema Broadcast > Settings > Your profile > API Keys.`
-
 ## Inputs
 
 | Name            | Required | Description                                                     |
@@ -35,7 +26,15 @@ X-API-Key can be generated at:
 Add two Secrets to your repo
 
 - THREEMA_URL
+  - Threema Group URL will look something like this:
+`https://broadcast.threema.ch/api/v1/identities/{broadcastUid}/groups/{groupUid}/chat`
+ 
 - THREEMA_XAPIKEY
+  - X-API-Key can be generated at:
+`Threema Broadcast > Settings > Your profile > API Keys.`
+ 
+ To get more infos about threema API:
+[API Docs](https://broadcast.threema.ch/en/api-doc)
 
 Then create or edit an action at `.github/workflows/youraction.yaml`.
 
