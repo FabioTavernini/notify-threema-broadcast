@@ -25,7 +25,7 @@ X-API-Key can be generated at:
 
 | Name            | Required | Description                                                     |
 |-----------------|----------|-----------------------------------------------------------------|
-| THREEMA_URL     | yes      | url to your Threema broadcast Group (POST will be sent to this) |
+| THREEMA_URL     | yes      | Url to your Threema broadcast Group (POST will be sent to this) |
 | THREEMA_XAPIKEY | yes      | Your Threema X-API-Key                                          |
 | job             | yes      | Job data as json : `${{toJson(job)}}`                           |
 | message         | yes      | The message text to send to the group                           |
