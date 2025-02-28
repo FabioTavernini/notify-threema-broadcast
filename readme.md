@@ -127,3 +127,4 @@ Feel free to contribute in any way, shape or form.
 # Disclaimer
 
 This project is not affiliated with [@Threema](https://github.com/Threema-ch). The Threema Broadcast API is used in this action as an external service, and the creator of this action is not responsible for any issues that arise from Threema’s service or changes to their API.
+
